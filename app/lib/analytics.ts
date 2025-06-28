@@ -156,7 +156,9 @@ export function trackChatInteraction(
 }
 
 // Trackear profundidad de scroll
-export function trackScrollDepth(): void {
+export function trackScrollDepth(): () => void {
+  if (typeof window === 'undefined') return () => {}
+  
   let maxScroll = 0
   const milestones = [25, 50, 75, 90, 100]
   
@@ -186,7 +188,9 @@ export function trackScrollDepth(): void {
 }
 
 // Trackear tiempo en página
-export function trackTimeOnPage(): void {
+export function trackTimeOnPage(): () => void {
+  if (typeof window === 'undefined') return () => {}
+  
   const startTime = Date.now()
   
   const handleBeforeUnload = () => {

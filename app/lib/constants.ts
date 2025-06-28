@@ -283,7 +283,7 @@ export const SEO_DEFAULTS = {
     'declaraciones fiscales IA',
     'GEVESALEC',
     'contador México CDMX',
-  ],
+  ] as string[],
   ogImage: '/images/og-image.jpg',
   twitterCard: 'summary_large_image',
 } as const

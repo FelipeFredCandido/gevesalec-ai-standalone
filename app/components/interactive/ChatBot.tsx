@@ -60,17 +60,17 @@ export default function ChatBot() {
     const message = userMessage.toLowerCase()
     
     if (message.includes('ia') || message.includes('inteligencia')) {
-      return botResponses['como funciona la ia']
+      return botResponses['como funciona la ia']!
     } else if (message.includes('precio') || message.includes('costo') || message.includes('cuanto')) {
-      return botResponses['precios']
+      return botResponses['precios']!
     } else if (message.includes('documento') || message.includes('necesito') || message.includes('requier')) {
-      return botResponses['documentos']
+      return botResponses['documentos']!
     } else if (message.includes('migrar') || message.includes('cambiar') || message.includes('transferir')) {
-      return botResponses['migrar']
+      return botResponses['migrar']!
     } else if (message.includes('soporte') || message.includes('ayuda') || message.includes('24')) {
-      return botResponses['soporte']
+      return botResponses['soporte']!
     } else {
-      return botResponses['default']
+      return botResponses.default
     }
   }
 

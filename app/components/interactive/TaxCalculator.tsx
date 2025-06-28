@@ -42,7 +42,7 @@ export default function TaxCalculator() {
     const totalDeductions = parseFloat(deductions) || 0
     const taxableIncome = Math.max(0, grossIncome - totalDeductions)
 
-    const isr = calculateISR(taxableIncome, personType, taxRegime)
+    const isr = calculateISR(taxableIncome)
     const iva = calculateIVA(grossIncome)
     const totalTaxes = isr + iva
     const netIncome = grossIncome - totalTaxes
