@@ -1,0 +1,62 @@
+{
+  "name": "GEVESALEC - Despacho Contable con IA",
+  "short_name": "GEVESALEC",
+  "description": "El primer despacho contable mexicano potenciado por inteligencia artificial",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1e40af",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "es-MX",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["business", "finance", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Calculadora de Impuestos",
+      "short_name": "Calculadora",
+      "description": "Calcula tus impuestos con IA",
+      "url": "/calculadora",
+      "icons": [
+        {
+          "src": "/icons/calculator-icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Contactar por WhatsApp",
+      "short_name": "WhatsApp",
+      "description": "Contacta directamente",
+      "url": "https://wa.me/+5215512345678",
+      "icons": [
+        {
+          "src": "/icons/whatsapp-icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

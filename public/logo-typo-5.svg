@@ -1,0 +1,30 @@
+<svg width="260" height="45" viewBox="0 0 260 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradiente Morgan Stanley style -->
+    <linearGradient id="morganGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#003366;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#004080;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Texto GEVESALEC - Estilo Morgan Stanley clásico -->
+  <text x="10" y="26" font-family="Times, 'Times New Roman', serif" font-size="24" font-weight="500" fill="url(#morganGradient)" letter-spacing="3px">
+    GEVESALEC
+  </text>
+  
+  <!-- Línea elegante -->
+  <line x1="10" y1="32" x2="190" y2="32" stroke="#003366" stroke-width="1" opacity="0.6"/>
+  
+  <!-- Subtítulo clásico -->
+  <text x="10" y="40" font-family="Times, 'Times New Roman', serif" font-size="9" font-weight="300" fill="#666666" letter-spacing="2px">
+    CONTADORES PÚBLICOS
+  </text>
+  
+  <!-- Monograma elegante -->
+  <g transform="translate(200, 0.5)">
+    <rect x="0" y="0" width="30" height="30" fill="none" stroke="#003366" stroke-width="1.5"/>
+    <text x="15" y="21" font-family="Times, 'Times New Roman', serif" font-size="18" font-weight="600" fill="#003366" text-anchor="middle">
+      G
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,59 @@
+# Robots.txt para GEVESALEC - Despacho Contable con IA
+# Optimizado para SEO en México
+
+# Permitir acceso a todos los bots principales
+User-agent: *
+Allow: /
+
+# Páginas principales permitidas explícitamente
+Allow: /calculadora
+Allow: /dashboard
+Allow: /servicios/
+Allow: /nosotros
+Allow: /contacto
+Allow: /ayuda
+
+# Bloquear directorios técnicos y APIs
+Disallow: /_next/
+Disallow: /api/
+Disallow: /_vercel/
+Disallow: /admin/
+Disallow: /*.json$
+
+# Bloquear archivos específicos
+Disallow: /favicon.ico
+Disallow: /manifest.json
+
+# Permitir recursos públicos importantes
+Allow: /icons/
+Allow: /images/
+Allow: /*.svg$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.webp$
+
+# Configuración específica para Googlebot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Configuración para Bingbot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+# Bloquear bots maliciosos comunes
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Ubicación del sitemap
+Sitemap: https://gevesalec.com/sitemap.xml
+
+# Host canónico (para evitar www vs no-www issues)
+Host: gevesalec.com
