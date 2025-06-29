@@ -3,12 +3,15 @@ import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
 import Header from '@/app/components/layout/Header'
 import Footer from '@/app/components/layout/Footer'
+import OptimizedAnalytics from '@/app/components/analytics/OptimizedAnalytics'
 import { SEO_DEFAULTS } from '@/app/lib/constants'
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
+  preload: true,
+  weight: ['300', '400', '500', '600', '700'],
 })
 
 const poppins = Poppins({
@@ -16,6 +19,7 @@ const poppins = Poppins({
   variable: '--font-poppins',
   weight: ['400', '500', '600', '700', '800', '900'],
   display: 'swap',
+  preload: true,
 })
 
 export const metadata: Metadata = {
@@ -149,6 +153,18 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://connect.facebook.net" />
+        
+        {/* DNS prefetch for performance */}
+        <link rel="dns-prefetch" href="https://api.whatsapp.com" />
+        
+        {/* Preload critical resources */}
+        <link rel="preload" href="/logo-typo-5.svg" as="image" type="image/svg+xml" />
+        
+        {/* Resource hints for better performance */}
+        <link rel="prefetch" href="/calculadora" />
+        <link rel="prefetch" href="/dashboard" />
         
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
@@ -170,44 +186,8 @@ export default function RootLayout({
         </main>
         <Footer />
         
-        {/* Analytics Scripts */}
-        {process.env.NODE_ENV === 'production' && (
-          <>
-            {/* Google Analytics */}
-            <script
-              async
-              src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', 'G-XXXXXXXXXX');
-                `,
-              }}
-            />
-            
-            {/* Facebook Pixel */}
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  !function(f,b,e,v,n,t,s)
-                  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-                  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-                  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-                  n.queue=[];t=b.createElement(e);t.async=!0;
-                  t.src=v;s=b.getElementsByTagName(e)[0];
-                  s.parentNode.insertBefore(t,s)}(window, document,'script',
-                  'https://connect.facebook.net/en_US/fbevents.js');
-                  fbq('init', '1234567890');
-                  fbq('track', 'PageView');
-                `,
-              }}
-            />
-          </>
-        )}
+        {/* Optimized Analytics */}
+        <OptimizedAnalytics />
       </body>
     </html>
   )

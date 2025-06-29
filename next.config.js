@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    optimizePackageImports: ['lucide-react'],
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
   images: {
     formats: ['image/webp', 'image/avif'],
@@ -14,6 +14,18 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
   swcMinify: true,
+  // Performance optimizations
+  modularizeImports: {
+    'lucide-react': {
+      transform: 'lucide-react/dist/esm/icons/{{member}}',
+    },
+  },
+  // Enable bundle analyzer in development
+  ...(process.env.ANALYZE === 'true' && {
+    experimental: {
+      bundlePagesExternals: false,
+    },
+  }),
 }
 
 module.exports = nextConfig
