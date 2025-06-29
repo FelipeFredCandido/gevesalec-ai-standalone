@@ -11,25 +11,10 @@
   "lang": "es-MX",
   "icons": [
     {
-      "src": "/icons/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
+      "src": "/logo-typo-5.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
       "purpose": "any maskable"
-    },
-    {
-      "src": "/icons/icon-256x256.png",
-      "sizes": "256x256",
-      "type": "image/png"
-    },
-    {
-      "src": "/icons/icon-384x384.png",
-      "sizes": "384x384",
-      "type": "image/png"
-    },
-    {
-      "src": "/icons/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
     }
   ],
   "categories": ["business", "finance", "productivity"],
@@ -38,25 +23,13 @@
       "name": "Calculadora de Impuestos",
       "short_name": "Calculadora",
       "description": "Calcula tus impuestos con IA",
-      "url": "/calculadora",
-      "icons": [
-        {
-          "src": "/icons/calculator-icon.png",
-          "sizes": "96x96"
-        }
-      ]
+      "url": "/calculadora"
     },
     {
-      "name": "Contactar por WhatsApp",
-      "short_name": "WhatsApp",
+      "name": "Contactar",
+      "short_name": "Contacto",
       "description": "Contacta directamente",
-      "url": "https://wa.me/+5215512345678",
-      "icons": [
-        {
-          "src": "/icons/whatsapp-icon.png",
-          "sizes": "96x96"
-        }
-      ]
+      "url": "/#contacto"
     }
   ]
 }
