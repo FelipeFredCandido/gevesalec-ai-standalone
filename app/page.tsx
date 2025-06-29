@@ -56,8 +56,8 @@ export default function HomePage() {
       {/* FAQ Section */}
       <FAQSection />
       
-      {/* ChatBot */}
-      <ChatBot />
+      {/* ChatBot - Temporarily Disabled */}
+      {/* <ChatBot /> */}
     </motion.div>
   )
 }
