@@ -1,25 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { Resend } from 'resend'
+// import { Resend } from 'resend'
 import { contactFormSchema, type ContactFormData } from '@/app/lib/schemas'
-import { createNotificationEmailTemplate, createClientConfirmationTemplate } from '@/app/lib/email-templates'
+// import { createNotificationEmailTemplate, createClientConfirmationTemplate } from '@/app/lib/email-templates'
 
-// Initialize Resend
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Email functionality temporarily disabled for deployment
+// Initialize Resend only when needed
+// let resend: Resend | null = null
+
+// function getResendClient() {
+//   if (!resend && process.env.RESEND_API_KEY) {
+//     resend = new Resend(process.env.RESEND_API_KEY)
+//   }
+//   return resend
+// }
 
 export async function POST(request: NextRequest) {
   try {
-    // Validar que tenemos la API key
-    if (!process.env.RESEND_API_KEY) {
-      console.error('❌ RESEND_API_KEY no está configurada')
-      return NextResponse.json(
-        { 
-          success: false, 
-          message: 'Configuración de email no disponible. Por favor contacta al administrador.' 
-        },
-        { status: 500 }
-      )
-    }
-
     // Parsear el body de la request
     const body = await request.json()
     
@@ -39,67 +35,25 @@ export async function POST(request: NextRequest) {
     
     const formData: ContactFormData = validationResult.data
     
-    console.log('📧 Procesando nuevo contacto:', {
+    console.log('📧 Procesando nuevo contacto (email temporalmente desactivado):', {
       nombre: formData.name,
       email: formData.email,
       tipoEmpresa: formData.companyType,
       fecha: new Date().toISOString(),
     })
 
-    // Preparar emails
-    const notificationEmail = createNotificationEmailTemplate(formData)
-    const confirmationEmail = createClientConfirmationTemplate(formData)
-    
-    const contactEmail = process.env.CONTACT_EMAIL || 'contacto@gevesalec.com'
-
-    try {
-      // Enviar notificación al equipo de GEVESALEC
-      const notificationResult = await resend.emails.send({
-        from: 'GEVESALEC <noreply@gevesalec.com>',
-        to: [contactEmail],
-        subject: `🚨 Nueva Consulta: ${formData.name} - ${formData.companyType}`,
-        html: notificationEmail,
-      })
-
-      // Enviar confirmación al cliente
-      const confirmationResult = await resend.emails.send({
-        from: 'GEVESALEC <noreply@gevesalec.com>',
-        to: [formData.email],
-        subject: '✅ Consulta Recibida - GEVESALEC te contactará pronto',
-        html: confirmationEmail,
-      })
-
-      console.log('✅ Emails enviados exitosamente:', {
-        notification: notificationResult.data?.id,
-        confirmation: confirmationResult.data?.id,
-      })
-
-    } catch (emailError) {
-      console.error('❌ Error enviando emails:', emailError)
-      
-      // Aunque falle el email, no queremos que falle toda la operación
-      // El usuario ya completó el formulario, así que respondemos éxito
-      // pero loggeamos el error para investigar
-      return NextResponse.json({
-        success: true,
-        message: 'Consulta recibida exitosamente. Nos pondremos en contacto contigo en menos de 24 horas.',
-        data: {
-          name: formData.name,
-          email: formData.email,
-          submittedAt: new Date().toISOString(),
-        },
-        warning: 'Email delivery may be delayed'
-      }, { status: 200 })
-    }
+    // Email functionality temporarily disabled for deployment
+    // TODO: Re-enable email functionality with Resend configuration
     
     return NextResponse.json({
       success: true,
-      message: 'Consulta agendada exitosamente. Nos pondremos en contacto contigo en menos de 24 horas.',
+      message: 'Consulta recibida exitosamente. Nos pondremos en contacto contigo en menos de 24 horas.',
       data: {
         name: formData.name,
         email: formData.email,
         submittedAt: new Date().toISOString(),
-      }
+      },
+      note: 'Email functionality temporarily disabled - contact details logged for manual follow-up'
     }, { status: 200 })
     
   } catch (error) {
