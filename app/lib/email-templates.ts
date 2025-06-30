@@ -335,7 +335,7 @@ export function createClientConfirmationTemplate(data: ContactFormData): string 
             </div>
             
             <p style="color: #6b7280; font-style: italic; text-align: center; margin: 30px 0;">
-              "Más de 500 empresas mexicanas ya confían en nuestra tecnología de IA 
+              "Más de 50 empresas mexicanas ya confían en nuestra tecnología de IA 
               para optimizar su contabilidad y cumplimiento fiscal"
             </p>
           </div>
