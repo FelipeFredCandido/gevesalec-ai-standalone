@@ -5,6 +5,7 @@ import Header from '@/app/components/layout/Header'
 import Footer from '@/app/components/layout/Footer'
 import OptimizedAnalytics from '@/app/components/analytics/OptimizedAnalytics'
 import { SEO_DEFAULTS } from '@/app/lib/constants'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -188,6 +189,9 @@ export default function RootLayout({
         
         {/* Optimized Analytics */}
         <OptimizedAnalytics />
+        
+        {/* Vercel Speed Insights */}
+        <SpeedInsights />
       </body>
     </html>
   )
