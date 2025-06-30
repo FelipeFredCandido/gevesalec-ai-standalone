@@ -210,7 +210,7 @@ export const FAQ = [
 // Estadísticas de la empresa
 export const STATS = [
   {
-    number: '500+',
+    number: '50+',
     label: 'Empresas atendidas',
     description: 'Clientes satisfechos en todo México',
   },
