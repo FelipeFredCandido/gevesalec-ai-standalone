@@ -155,7 +155,7 @@ export default function Testimonials() {
           {[
             {
               icon: Building2,
-              stat: '500+',
+              stat: '50+',
               label: 'Empresas Satisfechas',
               description: 'Clientes activos en todo México',
               color: 'primary',
