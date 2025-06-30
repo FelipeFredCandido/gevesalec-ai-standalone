@@ -306,7 +306,7 @@ export default function AIFeatures() {
             </h3>
             
             <p className="text-lg text-white/90 mb-8">
-              Únete a más de 500 empresas que ya están transformando
+              Únete a más de 50 empresas que ya están transformando
               sus procesos contables con nuestra tecnología de IA.
             </p>
             

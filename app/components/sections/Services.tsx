@@ -161,7 +161,6 @@ export default function Services() {
                           {service.price}
                         </div>
                         <div className="text-xs text-neutral-500">
-                          + IVA
                         </div>
                       </div>
                       
