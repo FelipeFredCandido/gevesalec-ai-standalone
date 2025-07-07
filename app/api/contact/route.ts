@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
       // Email de notificación para el equipo
       const notificationEmail = createNotificationEmailTemplate(formData)
       await resendClient.emails.send({
-        from: 'GEVESALEC <noreply@gevesalec.com>',
+        from: 'GEVESALEC <onboarding@resend.dev>',
         to: ['contacto@gevesalec.com'],
         subject: `Nueva consulta de ${formData.name}`,
         html: notificationEmail,
@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
       // Email de confirmación para el cliente
       const confirmationEmail = createClientConfirmationTemplate(formData)
       await resendClient.emails.send({
-        from: 'GEVESALEC <noreply@gevesalec.com>',
+        from: 'GEVESALEC <onboarding@resend.dev>',
         to: [formData.email],
         subject: 'Confirmación de tu consulta - GEVESALEC',
         html: confirmationEmail,
