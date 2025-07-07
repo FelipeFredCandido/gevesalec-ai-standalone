@@ -3,7 +3,8 @@ import { Resend } from 'resend'
 import { contactFormSchema, type ContactFormData } from '@/app/lib/schemas'
 import { createNotificationEmailTemplate, createClientConfirmationTemplate } from '@/app/lib/email-templates'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Initialize Resend only when API key is available
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
 
 export async function POST(request: NextRequest) {
   try {
@@ -35,6 +36,11 @@ export async function POST(request: NextRequest) {
 
     // Enviar emails usando Resend
     try {
+      if (!resend) {
+        console.error('❌ Resend client not initialized - missing RESEND_API_KEY')
+        throw new Error('Email service not configured')
+      }
+
       // Email de notificación para el equipo
       const notificationEmail = createNotificationEmailTemplate(formData)
       const { data: notificationData, error: notificationError } = await resend.emails.send({
