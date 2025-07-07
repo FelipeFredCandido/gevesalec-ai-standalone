@@ -3,15 +3,7 @@ import { Resend } from 'resend'
 import { contactFormSchema, type ContactFormData } from '@/app/lib/schemas'
 import { createNotificationEmailTemplate, createClientConfirmationTemplate } from '@/app/lib/email-templates'
 
-// Initialize Resend only when needed
-let resend: Resend | null = null
-
-function getResendClient() {
-  if (!resend && process.env.RESEND_API_KEY) {
-    resend = new Resend(process.env.RESEND_API_KEY)
-  }
-  return resend
-}
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(request: NextRequest) {
   try {
@@ -43,32 +35,38 @@ export async function POST(request: NextRequest) {
 
     // Enviar emails usando Resend
     try {
-      const resendClient = getResendClient()
-      
-      if (!resendClient) {
-        console.error('❌ Resend client not initialized - missing RESEND_API_KEY')
-        throw new Error('Email service not configured')
-      }
-
       // Email de notificación para el equipo
       const notificationEmail = createNotificationEmailTemplate(formData)
-      await resendClient.emails.send({
+      const { data: notificationData, error: notificationError } = await resend.emails.send({
         from: 'GEVESALEC <onboarding@resend.dev>',
         to: ['contacto@gevesalec.com'],
         subject: `Nueva consulta de ${formData.name}`,
         html: notificationEmail,
       })
 
+      if (notificationError) {
+        console.error('❌ Error enviando email de notificación:', notificationError)
+        throw notificationError
+      }
+
       // Email de confirmación para el cliente
       const confirmationEmail = createClientConfirmationTemplate(formData)
-      await resendClient.emails.send({
+      const { data: confirmationData, error: confirmationError } = await resend.emails.send({
         from: 'GEVESALEC <onboarding@resend.dev>',
         to: [formData.email],
         subject: 'Confirmación de tu consulta - GEVESALEC',
         html: confirmationEmail,
       })
 
-      console.log('✅ Emails enviados exitosamente')
+      if (confirmationError) {
+        console.error('❌ Error enviando email de confirmación:', confirmationError)
+        throw confirmationError
+      }
+
+      console.log('✅ Emails enviados exitosamente:', {
+        notification: notificationData?.id,
+        confirmation: confirmationData?.id
+      })
       
     } catch (emailError) {
       console.error('❌ Error enviando emails:', emailError)
