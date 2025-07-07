@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
       // Email de notificación para el equipo
       const notificationEmail = createNotificationEmailTemplate(formData)
       const { data: notificationData, error: notificationError } = await resend.emails.send({
-        from: 'GEVESALEC <onboarding@resend.dev>',
+        from: 'GEVESALEC <noreply@gevesalec.com>',
         to: ['contacto@gevesalec.com'],
         subject: `Nueva consulta de ${formData.name}`,
         html: notificationEmail,
@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
       // Email de confirmación para el cliente
       const confirmationEmail = createClientConfirmationTemplate(formData)
       const { data: confirmationData, error: confirmationError } = await resend.emails.send({
-        from: 'GEVESALEC <onboarding@resend.dev>',
+        from: 'GEVESALEC <noreply@gevesalec.com>',
         to: [formData.email],
         subject: 'Confirmación de tu consulta - GEVESALEC',
         html: confirmationEmail,
@@ -71,11 +71,21 @@ export async function POST(request: NextRequest) {
 
       console.log('✅ Emails enviados exitosamente:', {
         notification: notificationData?.id,
-        confirmation: confirmationData?.id
+        confirmation: confirmationData?.id,
+        from: 'noreply@gevesalec.com',
+        to: {
+          notification: 'contacto@gevesalec.com',
+          confirmation: formData.email
+        }
       })
       
     } catch (emailError) {
-      console.error('❌ Error enviando emails:', emailError)
+      console.error('❌ Error detallado enviando emails:', {
+        error: emailError,
+        message: emailError instanceof Error ? emailError.message : 'Error desconocido',
+        stack: emailError instanceof Error ? emailError.stack : undefined,
+        timestamp: new Date().toISOString()
+      })
       // No fallar la request si el email falla, solo registrar el error
     }
     
