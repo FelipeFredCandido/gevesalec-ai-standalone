@@ -13,6 +13,22 @@ GEVESALEC is a modern Next.js 14 application representing Mexico's first AI-powe
 - **Animations**: Framer Motion
 - **Icons**: Lucide React
 - **Forms**: React Hook Form with Zod validation
+- **Email**: Resend for contact form delivery
+- **Analytics**: Vercel Speed Insights integration
+- **Validation**: Zod schemas for type-safe form validation
+
+## Installation & Setup
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Open in browser
+http://localhost:3000
+```
 
 ## Development Commands
 
@@ -30,6 +46,23 @@ npm run lint:fix      # Auto-fix ESLint issues
 npm run type-check    # TypeScript type checking
 npm run format        # Prettier formatting
 ```
+
+## Project Configuration
+
+### TypeScript Configuration
+- **Target**: ES5 with DOM libraries
+- **Strict Mode**: Disabled for flexibility
+- **Module Resolution**: Bundler (Next.js optimized)
+- **Path Aliases**: `@/*` maps to root directory
+- **Incremental Compilation**: Enabled for faster builds
+
+### Prettier Configuration
+- **Semi**: false (no semicolons)
+- **Single Quotes**: true
+- **Tab Width**: 2 spaces
+- **Trailing Comma**: ES5 style
+- **Print Width**: 80 characters
+- **Tailwind Plugin**: Enabled for class sorting
 
 ## Architecture
 
@@ -93,6 +126,26 @@ Uses custom analytics system (`app/lib/analytics.ts`) with:
 - Scroll depth monitoring
 - Performance metrics
 
+## Performance & Optimization
+
+### Next.js Configuration
+- **Bundle Optimization**: Package imports optimized for Lucide React and Framer Motion
+- **Image Optimization**: WebP/AVIF formats with responsive sizing
+- **Compression**: Gzip compression enabled
+- **Minification**: SWC minifier for production builds
+- **Console Removal**: Production console.log statements removed
+- **Modular Imports**: Tree-shaking enabled for icon libraries
+- **Bundle Analysis**: Available with `ANALYZE=true` environment variable
+
+### PWA Configuration
+- **Manifest**: `/public/manifest.json` with full PWA setup
+- **Display Mode**: Standalone app experience
+- **Theme Color**: `#1e40af` (corporate blue)
+- **Icons**: Multi-resolution icons (16px to 512px)
+- **Shortcuts**: Quick access to Calculator and Contact
+- **Language**: Spanish (Mexico) primary
+- **Categories**: Business, Finance, Productivity
+
 ## SEO Configuration
 
 Comprehensive SEO setup in `app/layout.tsx`:
@@ -123,7 +176,59 @@ Key utilities for Mexican tax/business requirements:
 ## Contact Form Integration
 
 Email system configured via `app/api/contact/route.ts`:
-- Uses Resend for email delivery
-- Auto-reply functionality enabled
-- Templates in `app/lib/email-templates.ts`
-- Validation schemas in `app/lib/schemas.ts`
+- Uses Resend for email delivery with verified domain (`noreply@gevesalec.com`)
+- Dual email system: team notifications and client confirmations
+- HTML email templates in `app/lib/email-templates.ts`
+- Form validation schemas in `app/lib/schemas.ts`
+- Environment variable: `RESEND_API_KEY` required for production
+
+## Email Configuration
+
+The contact form sends two emails:
+1. **Team Notification**: To `contacto@gevesalec.com` with form details
+2. **Client Confirmation**: To user's email with service information
+
+Email templates are responsive HTML with corporate branding and include:
+- Professional styling with brand colors
+- Contact information and next steps
+- WhatsApp integration links
+
+## API Routes
+
+- `POST /api/contact` - Handles contact form submissions with email delivery
+- `GET /api/contact` - Health check endpoint for API monitoring
+
+## Important Configuration Notes
+
+- **Resend Domain**: Must use verified domain `gevesalec.com` for email delivery
+- **Environment Variables**: `RESEND_API_KEY` must be configured in Vercel
+- **Email Templates**: Comprehensive HTML templates with fallback handling
+- **Error Handling**: Graceful degradation if email service fails
+
+## Project Information
+
+### Version & Metadata
+- **Version**: 1.0.0
+- **Name**: gevesalec-ai
+- **Description**: GEVESALEC - Primer despacho contable mexicano potenciado por IA
+- **Author**: GEVESALEC
+- **License**: MIT
+- **Language**: Spanish (Mexico)
+- **Keywords**: contabilidad, IA, México, despacho contable, inteligencia artificial
+
+### Key Dependencies
+- **Next.js**: ^14.0.0 (React framework)
+- **React**: ^18.0.0 (UI library)
+- **TypeScript**: ^5.0.0 (Type safety)
+- **Tailwind CSS**: ^3.3.0 (Styling)
+- **Framer Motion**: ^10.16.0 (Animations)
+- **Lucide React**: ^0.290.0 (Icons)
+- **React Hook Form**: ^7.47.0 (Forms)
+- **Zod**: ^3.22.0 (Validation)
+- **Resend**: ^4.6.0 (Email delivery)
+
+### Development Dependencies
+- **ESLint**: Code linting with TypeScript support
+- **Prettier**: Code formatting with Tailwind plugin
+- **Autoprefixer**: CSS vendor prefixing
+- **PostCSS**: CSS processing
