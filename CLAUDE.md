@@ -109,3 +109,21 @@ Comprehensive SEO setup in `app/layout.tsx`:
 - Consistent color scheme from Tailwind config
 - Form validation uses Zod schemas
 - Analytics tracking on all user interactions
+
+## Mexican Business Logic
+
+Key utilities for Mexican tax/business requirements:
+- `validateRFC()` - RFC validation with proper format checking
+- `validateCURP()` - CURP validation for Mexican citizens
+- `calculateISR()` - Income tax calculation using 2024 brackets
+- `calculateIVA()` - VAT calculation (default 16%)
+- `getCurrentFiscalPeriod()` - Returns current fiscal year/quarter/month
+- `formatPhoneNumber()` - Mexican phone number formatting
+
+## Contact Form Integration
+
+Email system configured via `app/api/contact/route.ts`:
+- Uses Resend for email delivery
+- Auto-reply functionality enabled
+- Templates in `app/lib/email-templates.ts`
+- Validation schemas in `app/lib/schemas.ts`

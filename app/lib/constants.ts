@@ -4,7 +4,7 @@ export const COMPANY_INFO = {
   fullName: 'GEVESALEC - Despacho Contable',
   tagline: 'El primer despacho contable mexicano potenciado por IA',
   description: 'Transformamos la contabilidad tradicional con inteligencia artificial para ofrecer servicios más precisos, rápidos y eficientes.',
-  email: 'info@gevesalec.com',
+  email: 'contacto@gevesalec.com',
   phone: '+52 (81) 1680-1924',
   whatsapp: '+528116801924',
   address: {
