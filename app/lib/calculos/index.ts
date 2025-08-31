@@ -5,6 +5,7 @@
 
 // Import types needed for this file
 import type { DatosLiquidacion } from './liquidacion';
+import { LIMITES_CALCULO } from './constantes-sat';
 
 // Constantes SAT y LFT
 export {
