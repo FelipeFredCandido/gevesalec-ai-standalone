@@ -154,6 +154,8 @@ const CardFooter = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
 )
 CardFooter.displayName = 'CardFooter'
 
+export default Card
+
 export {
   Card,
   CardHeader,

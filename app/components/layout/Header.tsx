@@ -78,9 +78,9 @@ export default function Header() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-neutral-700 hover:text-primary-600 font-medium transition-colors duration-200 relative group"
+                  className="text-neutral-700 hover:text-primary-600 font-medium transition-colors duration-200 relative group flex items-center space-x-1"
                 >
-                  {item.name}
+                  <span>{item.name}</span>
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-200 group-hover:w-full" />
                 </a>
               ))}
@@ -151,9 +151,9 @@ export default function Header() {
                       key={item.name}
                       href={item.href}
                       onClick={closeMobileMenu}
-                      className="block text-lg font-medium text-neutral-700 hover:text-primary-600 transition-colors duration-200"
+                      className="block text-lg font-medium text-neutral-700 hover:text-primary-600 transition-colors duration-200 flex items-center space-x-2"
                     >
-                      {item.name}
+                      <span>{item.name}</span>
                     </a>
                   ))}
                 </nav>

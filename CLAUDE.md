@@ -4,231 +4,196 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-GEVESALEC is a modern Next.js 14 application representing Mexico's first AI-powered accounting firm. It provides automated accounting services, tax optimization, and interactive tools for Mexican businesses.
-
-### Core Technologies
-- **Framework**: Next.js 14 with App Router
-- **Language**: TypeScript with strict configuration
-- **Styling**: Tailwind CSS with custom corporate theme
-- **Animations**: Framer Motion
-- **Icons**: Lucide React
-- **Forms**: React Hook Form with Zod validation
-- **Email**: Resend for contact form delivery
-- **Analytics**: Vercel Speed Insights integration
-- **Validation**: Zod schemas for type-safe form validation
-
-## Installation & Setup
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Open in browser
-http://localhost:3000
-```
+GEVESALEC is a Next.js 14 application representing the first Mexican accounting firm powered by artificial intelligence. It's a professional marketing website with interactive tools for tax calculations, AI-powered features, and client engagement.
 
 ## Development Commands
 
 ```bash
 # Development
-npm run dev
+npm run dev          # Start development server (localhost:3000)
 
-# Production build
-npm run build
-npm run start
+# Build and Production
+npm run build        # Build for production
+npm run start        # Start production server
 
-# Code quality
-npm run lint          # ESLint checks
-npm run lint:fix      # Auto-fix ESLint issues
-npm run type-check    # TypeScript type checking
-npm run format        # Prettier formatting
+# Code Quality
+npm run lint         # Run ESLint
+npm run lint:fix     # Fix ESLint issues automatically
+npm run type-check   # TypeScript type checking without emitting files
+npm run format       # Format code with Prettier
 ```
 
-## Project Configuration
+## Architecture Overview
 
-### TypeScript Configuration
-- **Target**: ES5 with DOM libraries
-- **Strict Mode**: Disabled for flexibility
-- **Module Resolution**: Bundler (Next.js optimized)
-- **Path Aliases**: `@/*` maps to root directory
-- **Incremental Compilation**: Enabled for faster builds
+### Technology Stack
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript with relaxed strict mode (`strict: false`)
+- **Styling**: Tailwind CSS with custom design system
+- **Animations**: Framer Motion for micro-interactions
+- **Forms**: React Hook Form with Zod validation
+- **Icons**: Lucide React
+- **Email**: Resend API for contact form handling
+- **Analytics**: Custom analytics system + Vercel Speed Insights
 
-### Prettier Configuration
-- **Semi**: false (no semicolons)
-- **Single Quotes**: true
-- **Tab Width**: 2 spaces
-- **Trailing Comma**: ES5 style
-- **Print Width**: 80 characters
-- **Tailwind Plugin**: Enabled for class sorting
+### Project Structure
 
-## Architecture
+```
+app/
+├── components/
+│   ├── interactive/          # Dynamic components (TaxCalculator, ChatBot, Dashboard)
+│   ├── layout/              # Header, Footer
+│   ├── sections/            # Page sections (Hero, Services, Features, etc.)
+│   ├── ui/                  # Reusable UI components (Button, Card, Badge, etc.)
+│   └── analytics/           # Analytics components
+├── lib/
+│   ├── analytics.ts         # Custom tracking system
+│   ├── constants.ts         # Business data, services, testimonials
+│   ├── schemas.ts           # Zod validation schemas
+│   ├── utils.ts             # Utility functions (currency, tax calculations)
+│   └── email-templates.ts   # Email template generation
+├── api/contact/
+│   └── route.ts             # Contact form API endpoint
+├── calculadora/             # Tax calculator page
+├── dashboard/               # Business dashboard page
+├── globals.css              # Global styles with Tailwind
+├── layout.tsx               # Root layout with SEO, fonts, structured data
+└── page.tsx                 # Homepage
+```
 
-### App Router Structure
-- `/` - Homepage with hero, services, AI features, and testimonials
-- `/calculadora` - Interactive tax calculator with AI simulation
-- `/dashboard` - Business metrics dashboard
+## Core Features & Business Logic
 
-### Component Organization
-- `app/components/interactive/` - Complex stateful components (ChatBot, TaxCalculator, Dashboard)
-- `app/components/layout/` - Site-wide layout components (Header, Footer)
-- `app/components/sections/` - Page sections (Hero, Services, AIFeatures, Testimonials)
-- `app/components/ui/` - Reusable UI primitives (Button, Card, Input, etc.)
+### Mexican Tax System Integration
+- **ISR (Impuesto Sobre la Renta)** calculations via `calculateISR()` in utils
+- **IVA (Impuesto al Valor Agregado)** calculations via `calculateIVA()`
+- Support for "Persona Física" vs "Persona Moral" tax regimes
+- Tax regime options: General, Simplificado, Incorporación Fiscal, Actividades Empresariales
+- RFC validation for Mexican tax identification numbers
 
-### Key Files
-- `app/lib/constants.ts` - Central configuration including company info, services, testimonials, and SEO
-- `app/lib/utils.ts` - Utilities for currency formatting, RFC validation, tax calculations
-- `app/lib/analytics.ts` - Analytics tracking system
-- `app/globals.css` - Global styles and Tailwind setup
-- `tailwind.config.ts` - Corporate theme with custom colors and animations
+### AI-Powered Calculator (`TaxCalculator.tsx`)
+- Real-time tax calculation with simulated AI processing delay
+- Effective tax rate analysis
+- AI recommendations based on deduction ratios and effective rates
+- Detailed breakdown of gross income, deductions, taxable income, ISR, and IVA
+- Interactive form with person type selection and tax regime dropdown
 
-## Mexican Tax System Integration
+### Email System (`api/contact/route.ts`)
+- Resend integration for transactional emails
+- Dual email flow: notification to business + confirmation to client
+- Zod schema validation on server side
+- Detailed error logging with structured console output
+- Email template generation from dedicated template functions
 
-The application includes Mexican-specific functionality:
-- **RFC Validation**: Mexican tax ID validation
-- **ISR Calculation**: Income tax calculations for different regimes
-- **IVA Processing**: VAT calculations
-- **Tax Regimes**: Support for "Persona Física" and "Persona Moral"
-- **CFDI Processing**: Digital invoice processing
+### Analytics System (`lib/analytics.ts`)
+- Custom event tracking for CTA clicks, page views, scroll depth
+- Integration with Google Analytics and Facebook Pixel
+- Performance monitoring with page load times
+- Conversion funnel tracking for business optimization
 
 ## Design System
 
-### Corporate Colors
-- Primary: `#1e40af` (professional blue)
-- Success: `#10b981` (AI green)
-- Accent: `#8b5cf6` (tech purple)
+### Brand Colors (Tailwind Config)
+- **Primary**: Blue palette (`#1e40af` as brand blue)
+- **Success**: Green palette (`#10b981` for AI/success states)  
+- **Accent**: Purple palette (`#8b5cf6` for tech highlights)
+- **Neutral**: Extended gray palette for text and backgrounds
 
 ### Typography
-- Primary: Inter (system font)
-- Display: Poppins (headings)
+- **Primary Font**: Inter (Google Fonts, variable weight)
+- **Display Font**: Poppins for headings and emphasis
+- Font loading optimized with `display: 'swap'` and preload
 
-### Component Patterns
-- All interactive components use Framer Motion for animations
-- Consistent card-based layouts with shadow variations
-- AI-themed gradient backgrounds and glowing effects
-- Mobile-first responsive design
+### Animation System
+- Framer Motion for page transitions and component reveals
+- Custom Tailwind keyframes: `fadeIn`, `fadeInUp`, `slideInRight`, `float`, `shimmer`
+- Performance-optimized animations with `will-change` considerations
 
-## AI Features
+## Business Data Architecture
 
-The application simulates AI functionality through:
-- Delayed processing animations in calculators
-- Predictive text and suggestions in forms
-- Contextual chatbot responses
-- Automated error detection UI patterns
+### Services Configuration (`lib/constants.ts`)
+All business services are configured as typed constants:
+- Consultoría Financiera, Gestión de Nóminas, Planificación Estratégica
+- Contabilidad Integral, Asesoría Fiscal Estratégica, Automatización de Procesos
+- Each service includes: features array, pricing, color scheme, Lucide icon
 
-## Analytics & Tracking
+### AI Features Showcase
+- Classification accuracy (99.2%), Error detection (24/7), Predictive reports (30% savings)
+- Virtual assistant (<1min response time)
+- Structured as typed constants for consistent presentation
 
-Uses custom analytics system (`app/lib/analytics.ts`) with:
-- Page view tracking
-- CTA click tracking
-- Scroll depth monitoring
-- Performance metrics
+### SEO & Structured Data
+- Complete OpenGraph and Twitter Card metadata
+- JSON-LD structured data for AccountingService schema
+- Mexican business location and contact information
+- Comprehensive robot directives and verification codes
 
-## Performance & Optimization
+## Environment Configuration
 
-### Next.js Configuration
-- **Bundle Optimization**: Package imports optimized for Lucide React and Framer Motion
-- **Image Optimization**: WebP/AVIF formats with responsive sizing
-- **Compression**: Gzip compression enabled
-- **Minification**: SWC minifier for production builds
-- **Console Removal**: Production console.log statements removed
-- **Modular Imports**: Tree-shaking enabled for icon libraries
-- **Bundle Analysis**: Available with `ANALYZE=true` environment variable
+### Required Environment Variables
+```bash
+RESEND_API_KEY=your_resend_api_key        # For contact form emails
+```
 
-### PWA Configuration
-- **Manifest**: `/public/manifest.json` with full PWA setup
-- **Display Mode**: Standalone app experience
-- **Theme Color**: `#1e40af` (corporate blue)
-- **Icons**: Multi-resolution icons (16px to 512px)
-- **Shortcuts**: Quick access to Calculator and Contact
-- **Language**: Spanish (Mexico) primary
-- **Categories**: Business, Finance, Productivity
+### Optional Analytics Variables
+```bash
+GA_TRACKING_ID=G-XXXXXXXXXX              # Google Analytics
+FACEBOOK_PIXEL_ID=1234567890             # Facebook Pixel
+```
 
-## SEO Configuration
+## Performance Optimizations
 
-Comprehensive SEO setup in `app/layout.tsx`:
-- Structured data for AccountingService
-- OpenGraph and Twitter cards
-- Multilingual support (es-MX primary)
-- Performance optimizations
+### Next.js Configuration (`next.config.js`)
+- Package import optimization for `lucide-react` and `framer-motion`
+- WebP/AVIF image format support with responsive sizing
+- Console removal in production builds
+- SWC minification enabled
+- Bundle analyzer support via `ANALYZE=true`
 
-## Development Notes
+### Font and Resource Loading
+- Preconnect to Google Fonts and analytics domains
+- DNS prefetch for WhatsApp API
+- Preload critical SVG assets (logo)
+- Resource hints for calculator and dashboard pages
 
-- All components are TypeScript with strict typing
-- Use the `cn()` utility for conditional Tailwind classes
-- Mexican currency formatting via `formatCurrency()`
-- Consistent color scheme from Tailwind config
-- Form validation uses Zod schemas
-- Analytics tracking on all user interactions
+### Image Configuration
+- Device-specific sizing: [640, 768, 1024, 1280, 1536]
+- Image sizes: [16, 32, 48, 64, 96, 128, 256, 384]
+- Automatic format optimization (WebP/AVIF)
 
-## Mexican Business Logic
+## Component Architecture Patterns
 
-Key utilities for Mexican tax/business requirements:
-- `validateRFC()` - RFC validation with proper format checking
-- `validateCURP()` - CURP validation for Mexican citizens
-- `calculateISR()` - Income tax calculation using 2024 brackets
-- `calculateIVA()` - VAT calculation (default 16%)
-- `getCurrentFiscalPeriod()` - Returns current fiscal year/quarter/month
-- `formatPhoneNumber()` - Mexican phone number formatting
+### Interactive Components
+- Use `'use client'` directive for components requiring browser APIs
+- Custom analytics tracking via `useAnalytics()` hook
+- Framer Motion for enter/exit animations with staggered delays
+- Form state management with useState, validation with Zod schemas
 
-## Contact Form Integration
+### UI Component System
+- Variant-based design system (Button: primary, secondary, ai, outline)
+- Card components with consistent padding and shadow patterns
+- Badge system with icon support and multiple sizes
+- Modal components for interactive overlays
 
-Email system configured via `app/api/contact/route.ts`:
-- Uses Resend for email delivery with verified domain (`noreply@gevesalec.com`)
-- Dual email system: team notifications and client confirmations
-- HTML email templates in `app/lib/email-templates.ts`
-- Form validation schemas in `app/lib/schemas.ts`
-- Environment variable: `RESEND_API_KEY` required for production
+### Layout Components
+- Header with responsive navigation and mobile menu
+- Footer with structured business links and social media
+- Consistent typography scale and spacing system
 
-## Email Configuration
+## Mexican Business Context
 
-The contact form sends two emails:
-1. **Team Notification**: To `contacto@gevesalec.com` with form details
-2. **Client Confirmation**: To user's email with service information
+### Target Market
+- SMEs (Pequeñas y Medianas Empresas) in Mexico
+- Focus on SAT (Servicio de Administración Tributaria) compliance
+- CFDI (Comprobante Fiscal Digital por Internet) processing
+- IMSS (Instituto Mexicano del Seguro Social) payroll compliance
 
-Email templates are responsive HTML with corporate branding and include:
-- Professional styling with brand colors
-- Contact information and next steps
-- WhatsApp integration links
+### Competitive Advantages
+- AI-powered classification (99.2% accuracy)
+- 24/7 virtual assistant availability
+- Predictive financial reporting
+- Automated error detection and compliance monitoring
 
-## API Routes
-
-- `POST /api/contact` - Handles contact form submissions with email delivery
-- `GET /api/contact` - Health check endpoint for API monitoring
-
-## Important Configuration Notes
-
-- **Resend Domain**: Must use verified domain `gevesalec.com` for email delivery
-- **Environment Variables**: `RESEND_API_KEY` must be configured in Vercel
-- **Email Templates**: Comprehensive HTML templates with fallback handling
-- **Error Handling**: Graceful degradation if email service fails
-
-## Project Information
-
-### Version & Metadata
-- **Version**: 1.0.0
-- **Name**: gevesalec-ai
-- **Description**: GEVESALEC - Primer despacho contable mexicano potenciado por IA
-- **Author**: GEVESALEC
-- **License**: MIT
-- **Language**: Spanish (Mexico)
-- **Keywords**: contabilidad, IA, México, despacho contable, inteligencia artificial
-
-### Key Dependencies
-- **Next.js**: ^14.0.0 (React framework)
-- **React**: ^18.0.0 (UI library)
-- **TypeScript**: ^5.0.0 (Type safety)
-- **Tailwind CSS**: ^3.3.0 (Styling)
-- **Framer Motion**: ^10.16.0 (Animations)
-- **Lucide React**: ^0.290.0 (Icons)
-- **React Hook Form**: ^7.47.0 (Forms)
-- **Zod**: ^3.22.0 (Validation)
-- **Resend**: ^4.6.0 (Email delivery)
-
-### Development Dependencies
-- **ESLint**: Code linting with TypeScript support
-- **Prettier**: Code formatting with Tailwind plugin
-- **Autoprefixer**: CSS vendor prefixing
-- **PostCSS**: CSS processing
+### Compliance Requirements
+- Mexican tax law integration
+- SAT-approved calculation methods
+- CFDI digital invoice processing capability
+- Multi-regime tax support (Físicas vs Morales)

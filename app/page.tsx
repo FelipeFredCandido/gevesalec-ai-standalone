@@ -10,7 +10,7 @@ import { useAnalytics, trackScrollDepth, trackTimeOnPage } from '@/app/lib/analy
 
 // Lazy load heavy components
 const ContactSection = lazy(() => import('@/app/components/sections/ContactSection'))
-const FAQSection = lazy(() => import('@/app/components/sections/FAQSection'))
+const FiniquitoBanner = lazy(() => import('@/app/components/ui/FiniquitoBanner'))
 // const ChatBot = lazy(() => import('@/app/components/interactive/ChatBot'))
 
 export default function HomePage() {
@@ -56,9 +56,9 @@ export default function HomePage() {
         <ContactSection />
       </Suspense>
 
-      {/* FAQ Section */}
-      <Suspense fallback={<div className="h-96 bg-neutral-50 animate-pulse" />}>
-        <FAQSection />
+      {/* Finiquito Banner */}
+      <Suspense fallback={null}>
+        <FiniquitoBanner />
       </Suspense>
       
       {/* ChatBot - Temporarily Disabled */}

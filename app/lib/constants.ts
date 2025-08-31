@@ -258,6 +258,7 @@ export const FOOTER_LINKS = {
   ],
   resources: [
     { name: 'Centro de Ayuda', href: '/ayuda' },
+    { name: 'Preguntas Frecuentes', href: '/faq' },
     { name: 'Calculadoras', href: '/calculadoras' },
     { name: 'Guías Fiscales', href: '/guias' },
     { name: 'API Documentation', href: '/api-docs' },
