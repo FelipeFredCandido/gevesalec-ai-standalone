@@ -104,7 +104,7 @@ export async function POST(request: NextRequest) {
       id: calculationId,
       tipo,
       resultado: sanitizedResult,
-      metadata,
+      metadata: metadata || undefined,
       timestamp: now,
       expiresAt,
     }
