@@ -54,7 +54,7 @@ export default function FiniquitoContent() {
               <Badge variant="success" icon={<Award size={16} />}>
                 100% Legal LFT 2025
               </Badge>
-              <Badge variant="outline" icon={<Lock size={16} />}>
+              <Badge variant="default" icon={<Lock size={16} />}>
                 Sin registro requerido
               </Badge>
               <Badge variant="ai" icon={<Zap size={16} />}>
