@@ -32,9 +32,9 @@ interface SavedCalculation {
   tipo: 'finiquito' | 'liquidacion'
   resultado: Partial<ResultadoFiniquito | ResultadoLiquidacion>
   metadata?: {
-    tipoRescision: string
-    fechaCalculo: string
-    salarioMensual: number
+    tipoRescision?: string
+    fechaCalculo?: string
+    salarioMensual?: number
   }
   timestamp: number
   expiresAt: number
@@ -104,7 +104,7 @@ export async function POST(request: NextRequest) {
       id: calculationId,
       tipo,
       resultado: sanitizedResult,
-      metadata: metadata || undefined,
+      metadata,
       timestamp: now,
       expiresAt,
     }
