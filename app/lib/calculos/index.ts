@@ -4,7 +4,8 @@
  */
 
 // Import types needed for this file
-import type { DatosLiquidacion } from './liquidacion';
+import type { DatosLiquidacion, ResultadoLiquidacion } from './liquidacion';
+import type { ResultadoFiniquito } from './finiquito';
 import { LIMITES_CALCULO } from './constantes-sat';
 
 // Constantes SAT y LFT
