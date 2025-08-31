@@ -46,7 +46,8 @@ const calculationsStore = new Map<string, SavedCalculation>()
 // Función para limpiar cálculos expirados
 function cleanExpiredCalculations() {
   const now = Date.now()
-  for (const [id, calculation] of calculationsStore.entries()) {
+  const entries = Array.from(calculationsStore.entries())
+  for (const [id, calculation] of entries) {
     if (calculation.expiresAt < now) {
       calculationsStore.delete(id)
     }

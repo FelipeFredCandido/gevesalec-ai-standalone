@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useReducedMotion } from '@/app/hooks/useReducedMotion'
 import { Brain, Zap, TrendingUp, MessageCircle, ArrowRight, Play } from 'lucide-react'
 import Button from '@/app/components/ui/Button'
 import Badge from '@/app/components/ui/Badge'
@@ -9,6 +10,7 @@ import { useAnalytics } from '@/app/lib/analytics'
 
 export default function Hero() {
   const { trackCTAClick } = useAnalytics()
+  const shouldReduceMotion = useReducedMotion()
 
   const handleWhatsAppClick = () => {
     trackCTAClick('WhatsApp Hero', 'hero')
@@ -34,9 +36,9 @@ export default function Hero() {
             {/* Badge */}
             <motion.div
               className="inline-flex mb-6"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: shouldReduceMotion ? 0.2 : 0.5 }}
             >
               <Badge variant="ai" size="lg" icon={<Brain size={16} />}>
                 🇲🇽 Primer despacho contable con IA en México
@@ -46,9 +48,9 @@ export default function Hero() {
             {/* Main Heading */}
             <motion.h1
               className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-neutral-900 leading-tight mb-6"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              transition={{ duration: shouldReduceMotion ? 0.2 : 0.5, delay: shouldReduceMotion ? 0 : 0.1 }}
             >
               Contabilidad{' '}
               <span className="text-gradient">
@@ -70,9 +72,9 @@ export default function Hero() {
             {/* Subtitle */}
             <motion.p
               className="text-lg md:text-xl text-neutral-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: shouldReduceMotion ? 0.2 : 0.5, delay: shouldReduceMotion ? 0 : 0.2 }}
             >
               Revoluciona tu contabilidad con{' '}
               <strong className="text-primary-600">inteligencia artificial</strong>.
@@ -83,9 +85,9 @@ export default function Hero() {
             {/* CTA Buttons */}
             <motion.div
               className="flex flex-col sm:flex-row gap-4 mb-8"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+              transition={{ duration: shouldReduceMotion ? 0.2 : 0.5, delay: shouldReduceMotion ? 0 : 0.3 }}
             >
               <Button
                 variant="ai"
@@ -234,16 +236,16 @@ export default function Hero() {
               {/* Floating Elements */}
               <motion.div
                 className="absolute -top-4 -right-4 w-8 h-8 bg-success-500 rounded-full flex items-center justify-center text-white text-sm font-bold"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
+                animate={shouldReduceMotion ? {} : { y: [0, -10, 0] }}
+                transition={shouldReduceMotion ? {} : { duration: 2, repeat: Infinity }}
               >
                 IA
               </motion.div>
               
               <motion.div
                 className="absolute -bottom-4 -left-4 w-12 h-12 bg-accent-500 rounded-lg flex items-center justify-center text-white"
-                animate={{ rotate: [0, 5, -5, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
+                animate={shouldReduceMotion ? {} : { rotate: [0, 5, -5, 0] }}
+                transition={shouldReduceMotion ? {} : { duration: 3, repeat: Infinity }}
               >
                 <ArrowRight size={20} />
               </motion.div>
@@ -252,8 +254,8 @@ export default function Hero() {
             {/* Floating Cards */}
             <motion.div
               className="absolute -top-8 -left-8 bg-white rounded-lg shadow-lg p-4 border border-neutral-200"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+              animate={shouldReduceMotion ? {} : { y: [0, -10, 0] }}
+              transition={shouldReduceMotion ? {} : { duration: 3, repeat: Infinity, delay: 1 }}
             >
               <div className="flex items-center space-x-2">
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
@@ -265,8 +267,8 @@ export default function Hero() {
             
             <motion.div
               className="absolute -bottom-8 -right-8 bg-white rounded-lg shadow-lg p-4 border border-neutral-200"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
+              animate={shouldReduceMotion ? {} : { y: [0, 10, 0] }}
+              transition={shouldReduceMotion ? {} : { duration: 3, repeat: Infinity, delay: 0.5 }}
             >
               <div className="flex items-center space-x-2">
                 <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>

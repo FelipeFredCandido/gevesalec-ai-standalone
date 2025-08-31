@@ -3,9 +3,11 @@
 import { useEffect, Suspense, lazy } from 'react'
 import { motion } from 'framer-motion'
 import Hero from '@/app/components/sections/Hero'
-import Services from '@/app/components/sections/Services'
-import AIFeatures from '@/app/components/sections/AIFeatures'
-import Testimonials from '@/app/components/sections/Testimonials'
+
+// Lazy load heavy sections for improved performance
+const Services = lazy(() => import('@/app/components/sections/Services'))
+const AIFeatures = lazy(() => import('@/app/components/sections/AIFeatures'))
+const Testimonials = lazy(() => import('@/app/components/sections/Testimonials'))
 import { useAnalytics, trackScrollDepth, trackTimeOnPage } from '@/app/lib/analytics'
 
 // Lazy load heavy components
@@ -43,13 +45,19 @@ export default function HomePage() {
       <Hero />
 
       {/* Services Section */}
-      <Services />
+      <Suspense fallback={<div className="min-h-[600px] bg-gradient-to-br from-neutral-50 to-white" />}>
+        <Services />
+      </Suspense>
 
       {/* AI Features Section */}
-      <AIFeatures />
+      <Suspense fallback={<div className="min-h-[600px] bg-gradient-to-br from-primary-50 to-white" />}>
+        <AIFeatures />
+      </Suspense>
 
       {/* Testimonials Section */}
-      <Testimonials />
+      <Suspense fallback={<div className="min-h-[400px] bg-gradient-to-br from-neutral-50 to-white" />}>
+        <Testimonials />
+      </Suspense>
 
       {/* Contact/CTA Section */}
       <Suspense fallback={<div className="h-96 bg-gradient-ai animate-pulse" />}>

@@ -72,7 +72,7 @@ export default function CalculadoraFiniquito() {
     if (savedData) {
       try {
         const parsed = JSON.parse(savedData)
-        setFormData(parsed.formData || formData)
+        setFormData(prev => parsed.formData || prev)
         setCurrentStep(parsed.step || 1)
       } catch (error) {
         console.warn('Error loading saved calculation data:', error)
