@@ -3,6 +3,9 @@
  * Motor de cálculo de finiquitos y liquidaciones para México
  */
 
+// Import types needed for this file
+import type { DatosLiquidacion } from './liquidacion';
+
 // Constantes SAT y LFT
 export {
   SALARIO_MINIMO_2025,
