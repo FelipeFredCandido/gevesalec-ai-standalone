@@ -244,7 +244,8 @@ export async function OPTIONS(request: NextRequest) {
     }
     
     // Contar por tipo sin exponer datos sensibles
-    for (const calculation of calculationsStore.values()) {
+    const calculations = Array.from(calculationsStore.values())
+    for (const calculation of calculations) {
       calculationsByType[calculation.tipo]++
     }
     
