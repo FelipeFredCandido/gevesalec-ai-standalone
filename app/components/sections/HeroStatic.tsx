@@ -19,23 +19,22 @@ export default function HeroStatic() {
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-neutral-900 leading-tight mb-6">
-              Contabilidad{' '}
+              Ahorra{' '}
               <span className="text-gradient">
-                Inteligente
+                15 Horas Semanales
               </span>
               <br />
-              para tu{' '}
+              y Reduce{' '}
               <span className="relative">
-                Empresa
+                30% tus Impuestos
                 <div className="absolute -bottom-2 left-0 w-full h-2 bg-gradient-ai opacity-30 rounded-full" />
               </span>
             </h1>
 
             <p className="text-lg md:text-xl text-neutral-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Revoluciona tu contabilidad con{' '}
-              <strong className="text-primary-600">inteligencia artificial</strong>.
-              Automatiza procesos, detecta errores y optimiza tu situación fiscal
-              con la tecnología más avanzada del mercado.
+              Mientras tu competencia pierde días en papeleo, nuestros clientes cierran más ventas.{' '}
+              <strong className="text-primary-600">IA entrenada con 50,000+ casos del SAT</strong>{' '}
+              que reduce tu carga fiscal legalmente y elimina el 99.2% de errores humanos.
             </p>
 
             <HeroButtons />
