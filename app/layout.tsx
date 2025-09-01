@@ -3,24 +3,32 @@ import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
 import Header from '@/app/components/layout/Header'
 import Footer from '@/app/components/layout/Footer'
-import OptimizedAnalytics from '@/app/components/analytics/OptimizedAnalytics'
 import { SEO_DEFAULTS } from '@/app/lib/constants'
-import { SpeedInsights } from '@vercel/speed-insights/next'
+import dynamic from 'next/dynamic'
+
+const OptimizedAnalytics = dynamic(
+  () => import('@/app/components/analytics/OptimizedAnalytics'),
+  { ssr: false }
+)
+const SpeedInsights = dynamic(
+  () => import('@vercel/speed-insights/next').then(mod => mod.SpeedInsights),
+  { ssr: false }
+)
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
-  display: 'swap',
-  preload: true,
-  weight: ['300', '400', '500', '600', '700'],
+  display: 'optional',
+  weight: ['400', '600'],
+  preload: false,
 })
 
 const poppins = Poppins({
   subsets: ['latin'],
   variable: '--font-poppins',
-  weight: ['400', '500', '600', '700', '800', '900'],
-  display: 'swap',
-  preload: true,
+  weight: ['600', '700'],
+  display: 'optional',
+  preload: false,
 })
 
 export const metadata: Metadata = {
@@ -150,22 +158,12 @@ export default function RootLayout({
           }}
         />
         
-        {/* Preconnect to external domains */}
+        {/* Preconnect only to critical domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link rel="preconnect" href="https://www.google-analytics.com" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://connect.facebook.net" />
         
-        {/* DNS prefetch for performance */}
-        <link rel="dns-prefetch" href="https://api.whatsapp.com" />
-        
-        {/* Preload critical resources */}
-        <link rel="preload" href="/logo-typo-5.svg" as="image" type="image/svg+xml" />
-        
-        {/* Resource hints for better performance */}
-        <link rel="prefetch" href="/calculadora" />
-        <link rel="prefetch" href="/dashboard" />
+        {/* Preload critical logo */}
+        <link rel="preload" href="/logo-typo-5.svg" as="image" type="image/svg+xml" fetchPriority="high" />
         
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
