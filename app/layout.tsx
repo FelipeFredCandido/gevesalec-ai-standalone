@@ -5,6 +5,7 @@ import Header from '@/app/components/layout/Header'
 import Footer from '@/app/components/layout/Footer'
 import { SEO_DEFAULTS } from '@/app/lib/constants'
 import dynamic from 'next/dynamic'
+import { Analytics } from '@vercel/analytics/next'
 
 const OptimizedAnalytics = dynamic(
   () => import('@/app/components/analytics/OptimizedAnalytics'),
@@ -185,7 +186,10 @@ export default function RootLayout({
         </main>
         <Footer />
         
-        {/* Optimized Analytics */}
+        {/* Vercel Analytics - Web Analytics */}
+        <Analytics />
+        
+        {/* Custom Analytics */}
         <OptimizedAnalytics />
         
         {/* Vercel Speed Insights */}
