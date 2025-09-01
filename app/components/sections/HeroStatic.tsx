@@ -1,8 +1,8 @@
-import { Brain, MessageCircle, Play } from 'lucide-react'
-import Button from '@/app/components/ui/Button'
+import { Brain } from 'lucide-react'
 import Badge from '@/app/components/ui/Badge'
-import { COMPANY_INFO, STATS } from '@/app/lib/constants'
+import { STATS } from '@/app/lib/constants'
 import HeroEnhancements from './HeroEnhancements'
+import HeroButtons from './HeroButtons'
 
 export default function HeroStatic() {
   return (
@@ -38,27 +38,7 @@ export default function HeroStatic() {
               con la tecnología más avanzada del mercado.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <Button
-                variant="ai"
-                size="lg"
-                icon={<MessageCircle size={20} />}
-                href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Hola, me interesa conocer más sobre los servicios de GEVESALEC`}
-                trackingLabel="WhatsApp Hero CTA"
-                className="shadow-2xl hover:shadow-ai-lg"
-              >
-                Comenzar Gratis
-              </Button>
-              
-              <Button
-                variant="outline"
-                size="lg"
-                icon={<Play size={20} />}
-                trackingLabel="Ver Demo Hero"
-              >
-                Ver Demo
-              </Button>
-            </div>
+            <HeroButtons />
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {STATS.map((stat) => (

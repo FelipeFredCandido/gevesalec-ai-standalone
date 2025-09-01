@@ -4,13 +4,14 @@ import { useEffect } from 'react'
 
 export default function HeroEnhancements() {
   useEffect(() => {
-    const progressBars = document.querySelectorAll('.progress-bar')
+    const progressBars = document.querySelectorAll<HTMLElement>('.progress-bar')
     
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.style.transition = 'width 1.5s ease-out'
+            const element = entry.target as HTMLElement
+            element.style.transition = 'width 1.5s ease-out'
             observer.unobserve(entry.target)
           }
         })
