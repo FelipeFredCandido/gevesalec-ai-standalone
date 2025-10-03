@@ -1,32 +1,23 @@
-'use client'
-
-import { useEffect, useState } from 'react'
 import { Clock, AlertTriangle, TrendingDown, DollarSign, Calendar } from 'lucide-react'
-import Button from '@/app/components/ui/Button'
-import { COMPANY_INFO } from '@/app/lib/constants'
+import UrgencyButton from './UrgencyButton'
+
+function calculateDaysRemaining(): number {
+  const today = new Date()
+  const currentYear = today.getFullYear()
+  let fiscalDeadline = new Date(currentYear, 2, 31) // Marzo es mes 2 (0-indexed)
+
+  // Si ya pasó marzo, calcular para el próximo año
+  if (today > fiscalDeadline) {
+    fiscalDeadline = new Date(currentYear + 1, 2, 31)
+  }
+
+  const timeDiff = fiscalDeadline.getTime() - today.getTime()
+  const days = Math.ceil(timeDiff / (1000 * 3600 * 24))
+  return days
+}
 
 export default function UrgencySection() {
-  const [daysRemaining, setDaysRemaining] = useState(0)
-
-  useEffect(() => {
-    // Calcular días hasta el cierre fiscal (31 de marzo)
-    const today = new Date()
-    const currentYear = today.getFullYear()
-    let fiscalDeadline = new Date(currentYear, 2, 31) // Marzo es mes 2 (0-indexed)
-    
-    // Si ya pasó marzo, calcular para el próximo año
-    if (today > fiscalDeadline) {
-      fiscalDeadline = new Date(currentYear + 1, 2, 31)
-    }
-    
-    const timeDiff = fiscalDeadline.getTime() - today.getTime()
-    const days = Math.ceil(timeDiff / (1000 * 3600 * 24))
-    setDaysRemaining(days)
-  }, [])
-
-  const handleUrgentCTA = () => {
-    window.open(`https://wa.me/${COMPANY_INFO.whatsapp}?text=Hola, solo quedan ${daysRemaining} días para el cierre fiscal. Necesito ayuda urgente para optimizar mis impuestos.`, '_blank')
-  }
+  const daysRemaining = calculateDaysRemaining()
 
   return (
     <section className="relative py-16 bg-gradient-to-br from-warning-50 via-white to-error-50 overflow-hidden">
@@ -95,15 +86,7 @@ export default function UrgencySection() {
               Agenda tu diagnóstico gratuito HOY y descubre cuánto puedes ahorrar legalmente
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button
-                variant="secondary"
-                size="xl"
-                icon={<TrendingDown size={24} />}
-                onClick={handleUrgentCTA}
-                className="bg-white text-primary-600 hover:bg-neutral-100"
-              >
-                Agenda Tu Diagnóstico Gratuito Hoy
-              </Button>
+              <UrgencyButton daysRemaining={daysRemaining} />
               <span className="text-sm font-medium">
                 ⚡ Solo 5 lugares disponibles esta semana
               </span>
