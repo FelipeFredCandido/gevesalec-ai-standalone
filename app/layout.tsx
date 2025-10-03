@@ -4,32 +4,24 @@ import './globals.css'
 import Header from '@/app/components/layout/Header'
 import Footer from '@/app/components/layout/Footer'
 import { SEO_DEFAULTS } from '@/app/lib/constants'
-import dynamic from 'next/dynamic'
 import { Analytics } from '@vercel/analytics/next'
-
-const OptimizedAnalytics = dynamic(
-  () => import('@/app/components/analytics/OptimizedAnalytics'),
-  { ssr: false }
-)
-const SpeedInsights = dynamic(
-  () => import('@vercel/speed-insights/next').then(mod => mod.SpeedInsights),
-  { ssr: false }
-)
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import StructuredData from '@/app/components/seo/StructuredData'
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
-  display: 'optional',
+  display: 'swap',
   weight: ['400', '600'],
-  preload: false,
+  preload: true,
 })
 
 const poppins = Poppins({
   subsets: ['latin'],
   variable: '--font-poppins',
   weight: ['600', '700'],
-  display: 'optional',
-  preload: false,
+  display: 'swap',
+  preload: true,
 })
 
 export const metadata: Metadata = {
@@ -101,70 +93,7 @@ export default function RootLayout({
   return (
     <html lang="es-MX" className={`${inter.variable} ${poppins.variable}`}>
       <head>
-        {/* Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'AccountingService',
-              name: 'GEVESALEC',
-              image: 'https://gevesalec.com/logoneg.svg',
-              '@id': 'https://gevesalec.com',
-              url: 'https://gevesalec.com',
-              telephone: '+52-81-1680-1924',
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: 'Av. Insurgentes Sur 1234',
-                addressLocality: 'Monterrey',
-                addressRegion: 'NL',
-                postalCode: '64500',
-                addressCountry: 'MX',
-              },
-              geo: {
-                '@type': 'GeoCoordinates',
-                latitude: 19.432608,
-                longitude: -99.133209,
-              },
-              openingHoursSpecification: [
-                {
-                  '@type': 'OpeningHoursSpecification',
-                  dayOfWeek: [
-                    'Monday',
-                    'Tuesday',
-                    'Wednesday',
-                    'Thursday',
-                    'Friday',
-                  ],
-                  opens: '09:00',
-                  closes: '18:00',
-                },
-                {
-                  '@type': 'OpeningHoursSpecification',
-                  dayOfWeek: 'Saturday',
-                  opens: '10:00',
-                  closes: '14:00',
-                },
-              ],
-              sameAs: [
-                'https://www.facebook.com/gevesalec',
-                'https://www.twitter.com/gevesalec',
-                'https://www.linkedin.com/company/gevesalec',
-                'https://www.instagram.com/gevesalec',
-              ],
-              description: 'El primer despacho contable mexicano potenciado por inteligencia artificial. Servicios de contabilidad, nómina y fiscal con tecnología avanzada.',
-              priceRange: '$$',
-              serviceType: 'Contabilidad, Servicios Fiscales, Nómina Digital',
-            }),
-          }}
-        />
-        
-        {/* Preconnect only to critical domains */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        
-        {/* Preload critical logo */}
-        <link rel="preload" href="/logo-typo-5.svg" as="image" type="image/svg+xml" fetchPriority="high" />
+        <StructuredData />
         
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
@@ -185,14 +114,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        
-        {/* Vercel Analytics - Web Analytics */}
         <Analytics />
-        
-        {/* Custom Analytics */}
-        <OptimizedAnalytics />
-        
-        {/* Vercel Speed Insights */}
         <SpeedInsights />
       </body>
     </html>

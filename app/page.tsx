@@ -1,8 +1,11 @@
 import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
 import HeroStatic from '@/app/components/sections/HeroStatic'
-import UrgencySection from '@/app/components/sections/UrgencySection'
 import PageAnalytics from '@/app/components/analytics/PageAnalytics'
+
+const UrgencySection = dynamic(() => import('@/app/components/sections/UrgencySection'), {
+  loading: () => <div className="min-h-[600px] bg-gradient-to-br from-warning-50 via-white to-error-50" />,
+})
 
 const Services = dynamic(() => import('@/app/components/sections/Services'), {
   loading: () => <div className="min-h-[600px] bg-gradient-to-br from-neutral-50 to-white" />,
@@ -28,9 +31,11 @@ export default function HomePage() {
   return (
     <>
       <HeroStatic />
-      
-      <UrgencySection />
-      
+
+      <Suspense fallback={<div className="min-h-[600px] bg-gradient-to-br from-warning-50 via-white to-error-50" />}>
+        <UrgencySection />
+      </Suspense>
+
       <Suspense fallback={<div className="min-h-[600px] bg-gradient-to-br from-neutral-50 to-white" />}>
         <Services />
       </Suspense>
