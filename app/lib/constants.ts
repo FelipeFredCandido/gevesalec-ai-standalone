@@ -2,8 +2,8 @@
 export const COMPANY_INFO = {
   name: 'GEVESALEC',
   fullName: 'GEVESALEC - Despacho Contable',
-  tagline: 'El primer despacho contable mexicano potenciado por IA',
-  description: 'Transformamos la contabilidad tradicional con inteligencia artificial para ofrecer servicios más precisos, rápidos y eficientes.',
+  tagline: 'Tu despacho contable que hace TODO por ti',
+  description: 'Nos encargamos de tu contabilidad, nómina y declaraciones para que tú te enfoques en hacer crecer tu negocio. Cero estrés, cero multas.',
   email: 'contacto@gevesalec.com',
   phone: '+52 (81) 1680-1924',
   whatsapp: '+528116801924',
@@ -210,24 +210,24 @@ export const FAQ = [
 // Estadísticas de la empresa
 export const STATS = [
   {
-    number: '50+',
+    number: '200+',
     label: 'Empresas atendidas',
-    description: 'Clientes satisfechos en todo México',
+    description: 'PYMEs que confían en nosotros',
   },
   {
-    number: '99.8%',
-    label: 'Precisión IA',
-    description: 'En clasificación automática',
+    number: '0',
+    label: 'Multas SAT 2024',
+    description: 'Cumplimiento garantizado',
   },
   {
-    number: '24/7',
-    label: 'Disponibilidad',
-    description: 'Asistente virtual siempre activo',
+    number: '15 hrs',
+    label: 'Ahorradas/semana',
+    description: 'Tiempo que recuperas',
   },
   {
-    number: '75%',
-    label: 'Tiempo ahorrado',
-    description: 'Reducción en procesos manuales',
+    number: '4.9/5',
+    label: 'Calificación',
+    description: 'Satisfacción de clientes',
   },
 ] as const
 
@@ -273,17 +273,17 @@ export const FOOTER_LINKS = {
 
 // Metadatos SEO
 export const SEO_DEFAULTS = {
-  title: 'GEVESALEC - Despacho Contable con IA | México',
-  description: 'El primer despacho contable mexicano potenciado por inteligencia artificial. Servicios de contabilidad, nómina y fiscal con tecnología avanzada.',
+  title: 'GEVESALEC - Despacho Contable para PYMEs | México',
+  description: 'Olvídate del SAT. Nos encargamos de tu contabilidad, nómina y declaraciones. Servicio profesional para PYMEs en México. Cero multas garantizado.',
   keywords: [
-    'contador público México',
-    'despacho contable IA',
-    'contabilidad inteligencia artificial',
-    'servicios fiscales automatizados',
-    'nómina digital México',
-    'declaraciones fiscales IA',
+    'despacho contable pymes méxico',
+    'contador para pymes',
+    'servicios contables monterrey',
+    'contabilidad pymes',
+    'nómina pymes méxico',
+    'asesoría fiscal pymes',
     'GEVESALEC',
-    'contador México CDMX',
+    'evitar multas SAT',
   ] as string[],
   ogImage: '/images/og-image.jpg',
   twitterCard: 'summary_large_image',

@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
-import HeroStatic from '@/app/components/sections/HeroStatic'
+import HeroBeforeAfter from '@/app/components/sections/HeroBeforeAfter'
 import PageAnalytics from '@/app/components/analytics/PageAnalytics'
 
 const UrgencySection = dynamic(() => import('@/app/components/sections/UrgencySection'), {
@@ -30,7 +30,7 @@ const FiniquitoBanner = dynamic(() => import('@/app/components/ui/FiniquitoBanne
 export default function HomePage() {
   return (
     <>
-      <HeroStatic />
+      <HeroBeforeAfter />
 
       <Suspense fallback={<div className="min-h-[600px] bg-gradient-to-br from-warning-50 via-white to-error-50" />}>
         <UrgencySection />
