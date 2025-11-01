@@ -11,12 +11,20 @@ const Services = dynamic(() => import('@/app/components/sections/Services'), {
   loading: () => <div className="min-h-[600px] bg-gradient-to-br from-neutral-50 to-white" />,
 })
 
-const AIFeatures = dynamic(() => import('@/app/components/sections/AIFeatures'), {
-  loading: () => <div className="min-h-[600px] bg-gradient-to-br from-primary-50 to-white" />,
+const HowItWorks = dynamic(() => import('@/app/components/sections/HowItWorks'), {
+  loading: () => <div className="min-h-[600px] bg-white" />,
+})
+
+const SATProtection = dynamic(() => import('@/app/components/sections/SATProtection'), {
+  loading: () => <div className="min-h-[600px] bg-gradient-to-br from-neutral-50 to-primary-50/30" />,
+})
+
+const Guarantees = dynamic(() => import('@/app/components/sections/Guarantees'), {
+  loading: () => <div className="min-h-[600px] bg-gradient-to-br from-primary-50/50 via-white to-success-50/50" />,
 })
 
 const Testimonials = dynamic(() => import('@/app/components/sections/Testimonials'), {
-  loading: () => <div className="min-h-[400px] bg-gradient-to-br from-neutral-50 to-white" />,
+  loading: () => <div className="min-h-[400px] bg-white" />,
 })
 
 const ContactSection = dynamic(() => import('@/app/components/sections/ContactSection'), {
@@ -40,11 +48,19 @@ export default function HomePage() {
         <Services />
       </Suspense>
 
-      <Suspense fallback={<div className="min-h-[600px] bg-gradient-to-br from-primary-50 to-white" />}>
-        <AIFeatures />
+      <Suspense fallback={<div className="min-h-[600px] bg-white" />}>
+        <HowItWorks />
       </Suspense>
 
-      <Suspense fallback={<div className="min-h-[400px] bg-gradient-to-br from-neutral-50 to-white" />}>
+      <Suspense fallback={<div className="min-h-[600px] bg-gradient-to-br from-neutral-50 to-primary-50/30" />}>
+        <SATProtection />
+      </Suspense>
+
+      <Suspense fallback={<div className="min-h-[600px] bg-gradient-to-br from-primary-50/50 via-white to-success-50/50" />}>
+        <Guarantees />
+      </Suspense>
+
+      <Suspense fallback={<div className="min-h-[400px] bg-white" />}>
         <Testimonials />
       </Suspense>
 

@@ -62,20 +62,20 @@ export default function Services() {
           transition={{ duration: 0.5 }}
         >
           <Badge variant="primary" size="lg" className="mb-6">
-            🚀 Servicios Potenciados por IA
+            💼 Lo Que Hacemos Por Ti
           </Badge>
-          
+
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 mb-6">
-            Servicios que{' '}
-            <span className="text-gradient">Revolucionan</span>
+            Todo lo que{' '}
+            <span className="text-gradient">Necesitas</span>
             <br />
-            tu Contabilidad
+            en un Solo Lugar
           </h2>
-          
+
           <p className="text-lg md:text-xl text-neutral-600 leading-relaxed">
-            Descubre cómo nuestros servicios inteligentes transforman
-            la manera de manejar las finanzas de tu empresa con
-            precisión, velocidad y eficiencia sin precedentes.
+            Nos encargamos de toda la parte contable, fiscal y administrativa
+            de tu empresa. Tú solo enfócate en hacer crecer tu negocio,
+            nosotros manejamos el resto.
           </p>
         </motion.div>
 

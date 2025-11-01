@@ -84,9 +84,27 @@ export default function Testimonials() {
                 </div>
 
                 {/* Quote */}
-                <blockquote className="text-xl md:text-2xl text-neutral-700 leading-relaxed mb-8 font-medium">
+                <blockquote className="text-xl md:text-2xl text-neutral-700 leading-relaxed mb-6 font-medium">
                   &ldquo;{TESTIMONIALS[currentTestimonial].content}&rdquo;
                 </blockquote>
+
+                {/* Before/After Stats */}
+                {'before' in TESTIMONIALS[currentTestimonial] && (
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 max-w-3xl mx-auto">
+                    <div className="bg-error-50 rounded-lg p-4 border-l-4 border-error-500">
+                      <div className="text-xs font-semibold text-error-700 mb-1">ANTES:</div>
+                      <div className="text-sm text-error-900 font-medium">{TESTIMONIALS[currentTestimonial].before}</div>
+                    </div>
+                    <div className="bg-success-50 rounded-lg p-4 border-l-4 border-success-500">
+                      <div className="text-xs font-semibold text-success-700 mb-1">DESPUÉS:</div>
+                      <div className="text-sm text-success-900 font-medium">{TESTIMONIALS[currentTestimonial].after}</div>
+                    </div>
+                    <div className="bg-primary-50 rounded-lg p-4 border-l-4 border-primary-500">
+                      <div className="text-xs font-semibold text-primary-700 mb-1">RESULTADO:</div>
+                      <div className="text-sm text-primary-900 font-medium">{TESTIMONIALS[currentTestimonial].result}</div>
+                    </div>
+                  </div>
+                )}
 
                 {/* Author */}
                 <div className="flex items-center justify-center space-x-4">
