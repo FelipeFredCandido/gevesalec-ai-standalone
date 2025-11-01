@@ -214,6 +214,45 @@ export default function HeroBeforeAfter() {
             </div>
           </div>
         </div>
+
+        {/* Client Logos - Integrados en Hero */}
+        <div className="mt-16 pt-12 border-t border-neutral-200">
+          <div className="text-center mb-8">
+            <p className="text-sm font-semibold text-neutral-500 uppercase tracking-wide mb-2">
+              Confían en nosotros
+            </p>
+            <h3 className="text-xl md:text-2xl font-bold text-neutral-900">
+              200+ PYMEs Mexicanas nos eligen
+            </h3>
+          </div>
+
+          {/* Logo Grid Compacto */}
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 items-center max-w-6xl mx-auto">
+            {[
+              { name: 'TechStartup MX', industry: 'SaaS' },
+              { name: 'Autotransportes', industry: 'Logística' },
+              { name: 'Refacciones', industry: 'Comercio' },
+              { name: 'Consultores', industry: 'Consultoría' },
+              { name: 'Distribuidora', industry: 'Distribución' },
+              { name: 'Constructor MTY', industry: 'Construcción' },
+              { name: 'Servicios Médicos', industry: 'Salud' },
+              { name: 'EdTech', industry: 'Educación' },
+            ].map((client, index) => (
+              <div
+                key={client.name}
+                className="group bg-gradient-to-br from-neutral-50 to-neutral-100 border border-neutral-200 rounded-lg p-3 hover:border-primary-300 hover:shadow-md transition-all duration-300"
+              >
+                <div className="flex flex-col items-center gap-1">
+                  <div className="text-2xl">🏢</div>
+                  <p className="text-xs font-bold text-neutral-700 group-hover:text-primary-600 transition-colors text-center">
+                    {client.name}
+                  </p>
+                  <p className="text-xs text-neutral-500">{client.industry}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       <HeroEnhancements />
