@@ -78,25 +78,47 @@ export default function UrgencySection() {
           </div>
 
           {/* CTA Section */}
-          <div className="text-center bg-gradient-to-r from-primary-600 to-accent-600 rounded-2xl p-8 text-white">
-            <h3 className="text-2xl font-bold mb-4">
-              🎁 No pierdas más dinero este año fiscal
+          <div className="text-center bg-gradient-to-r from-primary-600 to-accent-600 rounded-2xl p-8 md:p-10 text-white">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">
+              No pierdas más dinero este año fiscal
             </h3>
-            <p className="text-lg mb-6 opacity-95">
-              Agenda tu diagnóstico gratuito HOY y descubre cuánto puedes ahorrar legalmente
+            <p className="text-lg md:text-xl mb-6 text-white/95 max-w-3xl mx-auto">
+              Agenda tu diagnóstico gratuito y descubre cuánto puedes ahorrar legalmente antes del cierre fiscal
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <UrgencyButton daysRemaining={daysRemaining} />
-              <span className="text-sm font-medium">
-                ⚡ Solo 5 lugares disponibles esta semana
-              </span>
+
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-6 max-w-2xl mx-auto">
+              <p className="text-sm font-semibold mb-3">⏰ Si empiezas HOY:</p>
+              <div className="grid md:grid-cols-2 gap-4 text-left">
+                <div className="flex items-start gap-2">
+                  <span className="text-success-300 shrink-0">✓</span>
+                  <span className="text-sm">Tiempo suficiente para optimizar todas tus deducciones</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-success-300 shrink-0">✓</span>
+                  <span className="text-sm">Evitas el rush y errores de último momento</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-success-300 shrink-0">✓</span>
+                  <span className="text-sm">Revisión completa del año fiscal actual</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-success-300 shrink-0">✓</span>
+                  <span className="text-sm">Planificación fiscal para el próximo año</span>
+                </div>
+              </div>
             </div>
+
+            <UrgencyButton daysRemaining={daysRemaining} />
+
+            <p className="text-sm text-white/80 mt-4">
+              📅 Quedan {daysRemaining} días para la declaración anual
+            </p>
           </div>
 
           {/* Trust Element */}
           <div className="text-center mt-8">
             <p className="text-sm text-neutral-600">
-              💼 Más de 500 empresas ya optimizaron sus impuestos con nosotros
+              ✓ 200+ PYMEs ya optimizaron sus impuestos con nosotros  •  ✓ 0 multas SAT en 2024
             </p>
           </div>
         </div>

@@ -7,6 +7,7 @@ import { SEO_DEFAULTS } from '@/app/lib/constants'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import StructuredData from '@/app/components/seo/StructuredData'
+import ExitIntentPopup from '@/app/components/ui/ExitIntentPopup'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -114,6 +115,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <ExitIntentPopup />
         <Analytics />
         <SpeedInsights />
       </body>

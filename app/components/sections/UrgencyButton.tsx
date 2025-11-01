@@ -1,8 +1,7 @@
 'use client'
 
-import { TrendingDown } from 'lucide-react'
+import { Calendar } from 'lucide-react'
 import Button from '@/app/components/ui/Button'
-import { COMPANY_INFO } from '@/app/lib/constants'
 
 interface UrgencyButtonProps {
   daysRemaining: number
@@ -10,21 +9,25 @@ interface UrgencyButtonProps {
 
 export default function UrgencyButton({ daysRemaining }: UrgencyButtonProps) {
   const handleUrgentCTA = () => {
-    window.open(
-      `https://wa.me/${COMPANY_INFO.whatsapp}?text=Hola, solo quedan ${daysRemaining} días para el cierre fiscal. Necesito ayuda urgente para optimizar mis impuestos.`,
-      '_blank'
-    )
+    const contactSection = document.getElementById('contacto')
+    if (contactSection) {
+      contactSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
   }
 
   return (
     <Button
       variant="secondary"
       size="xl"
-      icon={<TrendingDown size={24} />}
+      icon={<Calendar size={24} />}
       onClick={handleUrgentCTA}
-      className="bg-white text-primary-600 hover:bg-neutral-100"
+      trackingLabel="Agenda Diagnóstico - Urgency"
+      className="bg-white text-primary-600 hover:bg-neutral-100 shadow-xl"
     >
-      Agenda Tu Diagnóstico Gratuito Hoy
+      Agenda Diagnóstico Gratis (15 min)
     </Button>
   )
 }

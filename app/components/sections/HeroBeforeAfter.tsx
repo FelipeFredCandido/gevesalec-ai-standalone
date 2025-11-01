@@ -14,31 +14,35 @@ export default function HeroBeforeAfter() {
           <div className="text-center lg:text-left">
             <div className="inline-flex mb-6">
               <Badge variant="ai" size="lg" icon={<Brain size={16} />}>
-                🇲🇽 Despacho Contable para PYMEs
+                🇲🇽 #1 Despacho Contable con IA para PYMEs
               </Badge>
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-neutral-900 leading-tight mb-6">
-              Olvídate del SAT{' '}
-              <br />
+              Reduce{' '}
               <span className="text-gradient">
-                Nosotros Hacemos TODO
+                30% tus Impuestos
+              </span>
+              {' '}
+              <span className="relative inline-block">
+                Legalmente
+                <div className="absolute -bottom-2 left-0 w-full h-2 bg-gradient-ai opacity-30 rounded-full" />
               </span>
               <br />
-              <span className="relative">
-                por Ti
-                <div className="absolute -bottom-2 left-0 w-full h-2 bg-gradient-ai opacity-30 rounded-full" />
+              <span className="text-3xl md:text-4xl lg:text-5xl text-neutral-700">
+                Sin Mover un Dedo
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-neutral-600 mb-4 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              <strong className="text-neutral-900">Cada mes, 4 de cada 10 PYMEs reciben multas del SAT</strong> por errores que pudieron evitarse.
-            </p>
+            <div className="bg-primary-50 border-l-4 border-primary-600 rounded-lg p-4 mb-6 max-w-2xl mx-auto lg:mx-0">
+              <p className="text-lg md:text-xl text-neutral-900 leading-relaxed">
+                Nuestros clientes ahorran <strong className="text-primary-600 text-2xl">$127,000 MXN promedio</strong> en su primer año.
+              </p>
+            </div>
 
             <p className="text-lg md:text-xl text-neutral-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Tú enfócate en vender, nosotros nos encargamos de tu{' '}
-              <strong className="text-primary-600">contabilidad, nómina y declaraciones.</strong>{' '}
-              Garantizado.
+              Tú solo envías facturas por WhatsApp, nosotros hacemos{' '}
+              <strong className="text-primary-600">TODO lo demás:</strong> contabilidad, nómina, declaraciones y optimización fiscal.
             </p>
 
             <HeroButtons />
